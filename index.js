@@ -28,26 +28,13 @@ async function scaleImage(inputPath) {
     newWidth = Math.round(512 * aspectRatio);
   }
 
-  const background = await sharp({
-    create: {
-      width: 512,
-      height: 512,
-      channels: 4,
-      background: { r: 255, g: 255, b: 255, alpha: 1 }
-    }
-  }).png().toBuffer();
-
   const resizedImage = await sharp(inputPath)
     .resize(newWidth, newHeight)
+    .png()
     .toBuffer();
 
   const generateImage = async (quality = 100) => {
-    await sharp(background)
-      .composite([{
-        input: resizedImage,
-        top: Math.round((512 - newHeight) / 2),
-        left: Math.round((512 - newWidth) / 2)
-      }])
+    await sharp(resizedImage)
       .png({ quality })
       .toFile(outputPath);
 
