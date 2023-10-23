@@ -5,7 +5,8 @@ npm-debug.log
 # Operating system files
 .DS_Store
 Thumbs.db
-stickers/*.*
+stickers/*
+!stickers/.gitignore
 
 # IDE files
 .idea/
