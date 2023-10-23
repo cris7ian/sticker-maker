@@ -1,0 +1,12 @@
+# Node.js artifacts
+node_modules/
+npm-debug.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+stickers/
+
+# IDE files
+.idea/
+.vscode/
